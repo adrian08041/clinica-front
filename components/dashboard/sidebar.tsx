@@ -62,9 +62,17 @@ export function Sidebar({ className }: { className?: string }) {
             </div>
 
             <div className="p-4 border-t border-slate-800">
-                <button className="w-full flex items-center px-4 py-2 text-sm rounded-lg hover:bg-slate-800 transition-colors mb-2 text-slate-300">
-                    <Settings className="w-5 h-5 mr-3 text-slate-400" /> Configurações
-                </button>
+                <Link
+                    href="/configuracoes"
+                    className={cn(
+                        "w-full flex items-center px-4 py-2 text-sm rounded-lg transition-colors mb-2",
+                        pathname?.startsWith("/configuracoes")
+                            ? "bg-teal-900/40 text-teal-400 border border-teal-800/50"
+                            : "text-slate-300 hover:bg-slate-800"
+                    )}
+                >
+                    <Settings className={cn("w-5 h-5 mr-3", pathname?.startsWith("/configuracoes") ? "text-teal-500" : "text-slate-400")} /> Configurações
+                </Link>
                 <div className="flex items-center p-3 mt-2 rounded-xl border border-slate-700 bg-slate-800/50">
                     <Avatar className="w-10 h-10 border-2 border-slate-600">
                         <AvatarImage src="https://i.pravatar.cc/150?u=ana-silva" />

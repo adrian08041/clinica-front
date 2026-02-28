@@ -33,7 +33,7 @@ import { MOCK_PATIENTS } from "@/lib/mock-data";
 export default function PatientProfilePage() {
   const params = useParams();
   const router = useRouter();
-  const id = Number(params.id);
+  const id = String(params.id);
   const [activeTab, setActiveTab] = useState("Consultas");
 
   // Fallback if patient is not found in mock data
