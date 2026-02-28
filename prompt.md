@@ -1,8 +1,8 @@
-# Implementação da Página de login
+# Implementação da Página de configurações
 
 ## Objetivo
-Implemente a interface da página de login conforme o design no Figma:
-https://www.figma.com/design/E4h9Ru6vLWbM8Zj4JLuV7o/Projeto-clinica-odonto?node-id=7-1030&m=dev
+Implemente a interface da página de configurações conforme o design no Figma:
+https://www.figma.com/design/E4h9Ru6vLWbM8Zj4JLuV7o/Projeto-clinica-odonto?node-id=5-77
 
 ---
 
@@ -63,6 +63,7 @@ export const SERVICES: Service[] = [
 - Cada seção da página vive em seu próprio arquivo dentro de `components/home/`.
 - Use `"use client"` **somente** nos componentes que precisam de interatividade (formulários, estados, eventos).
 - Prefira **componentes de servidor** sempre que possível para melhor performance.
+- sempre reutilize componentes que ja existe no projeto, exemplo botão, input, etc. 
 
 ### Tipagem
 - Habilite `"strict": true` no `tsconfig.json`.
