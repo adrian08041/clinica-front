@@ -9,7 +9,6 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -31,7 +30,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
             const storedUser = localStorage.getItem("user");
             if (storedUser) {
                 const parsedUser = JSON.parse(storedUser);
-                // eslint-disable-next-line
+                /* eslint-disable react-hooks/set-state-in-effect */
                 if (parsedUser.firstName) {
                     setUserFirstName(parsedUser.firstName);
                     setUserFullName(parsedUser.firstName + (parsedUser.lastName ? ` ${parsedUser.lastName}` : ""));
@@ -42,6 +41,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
                 if (parsedUser.email) {
                     setUserEmail(parsedUser.email);
                 }
+                /* eslint-enable react-hooks/set-state-in-effect */
             }
         } catch (e) {
             console.error("Failed to parse user from local storage", e);
