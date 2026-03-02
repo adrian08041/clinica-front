@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { horariosSchema, type HorariosFormData } from "@/lib/schemas/horarios-schema";
@@ -14,7 +14,6 @@ export function HorariosSettings() {
         control,
         handleSubmit,
         setValue,
-        watch,
         reset,
         formState: { errors }
     } = useForm<HorariosFormData>({
@@ -39,6 +38,11 @@ export function HorariosSettings() {
         name: "dias",
     });
 
+    const dias = useWatch({
+        control,
+        name: "dias"
+    });
+
     const onSubmit = (data: HorariosFormData) => {
         // eslint-disable-next-line no-console
         console.log("Horários salvos:", data);
@@ -59,10 +63,8 @@ export function HorariosSettings() {
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
                 <div className="flex flex-col gap-6 mb-10">
                     {fields.map((field, index) => {
-                        // eslint-disable-next-line
-                        const isActive = watch(`dias.${index}.active`);
-                        // eslint-disable-next-line
-                        const hours = watch(`dias.${index}.hours`);
+                        const isActive = dias?.[index]?.active ?? false;
+                        const hours = dias?.[index]?.hours ?? "";
 
                         return (
                             <div key={field.id} className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 border-b border-slate-100 pb-6 last:border-0 last:pb-0">
